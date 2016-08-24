@@ -64,6 +64,12 @@ CACHE_DIR="$2/vendor"
 LP_DIR=`cd $(dirname $0); cd ..; pwd`
 BUILDPACK_DIR="$(dirname $(dirname $0))"
 
+#directory listing
+echo "BUILD_DIR = $BUILD_DIR" | indent
+echo "CACHE_DIR = $CACHE_DIR" | indent
+echo "LP_DIR = $LP_DIR" | indent
+echo "BUILDPACK_DIR = $BUILDPACK_DIR" | indent
+
 # config
 BUILD_PACK_VERSION="20130729"
 
@@ -75,7 +81,7 @@ R_VERSION="3.1.0"
 S3_BUCKET="heroku-buildpack-r"
 #R_BINARIES="http://${S3_BUCKET}.s3.amazonaws.com/R-${R_VERSION}-binaries-${BUILD_PACK_VERSION}.tar.gz"
 #R_BINARIES="https://s3.amazonaws.com/r-buildpack/R-3.1.0-binaries-20140629-2201.tar.gz"
-R_BINARIES="https://s3-us-west-1.amazonaws.com/rp-buildpack/R-3.1.0-binaries-20140629-2201-gm.tar.gz"
+R_BINARIES="https://s3-us-west-1.amazonaws.com/rp-buildpack/R-3.1.0-binaries-20140629-2201.tar.gz"
 
 VENDOR_DIR="$BUILD_DIR/vendor"
 R_HOME="$VENDOR_DIR/R"
@@ -92,6 +98,8 @@ echo "R Binaries loc: $R_BINARIES" | indent
 # download and unpack binaries
 echo "Downloading and unpacking R binaries" | indent
 mkdir -p $VENDOR_DIR && mkdir -p /app/vendor
+echo "VENDOR_DIR = $VENDOR_DIR" | indent
+
 curl $R_BINARIES -s -o r_binaries.tar.gz
 tar xzf r_binaries.tar.gz -C $VENDOR_DIR
 rm r_binaries.tar.gz
