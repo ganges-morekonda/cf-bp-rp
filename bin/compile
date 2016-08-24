@@ -86,6 +86,9 @@ mkdir -p $CACHE_DIR
 # vendor R into the slug
 echo "Vendoring R $R_VERSION" | indent
 
+# R_Binaries location
+echo "R Binaries loc: $R_BINARIES" | indent
+
 # download and unpack binaries
 echo "Downloading and unpacking R binaries" | indent
 mkdir -p $VENDOR_DIR && mkdir -p /app/vendor
